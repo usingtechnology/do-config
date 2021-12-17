@@ -1,12 +1,12 @@
 holder:
   image:
-    repository: image-registry.openshift-image-registry.svc:5000/f6b17d-tools/bcgov-b2b
+    repository: ghcr.io/usingtechnology/do-app/traction-holder
     pullPolicy: Always
-    tag: "latest"
+    tag: latest
 
 verifier:
   image:
-    repository: image-registry.openshift-image-registry.svc:5000/f6b17d-tools/bcgov-b2b
+    repository: ghcr.io/usingtechnology/do-app/traction-verfier
     pullPolicy: Always
-    tag: "latest"
+    tag: latest
 
