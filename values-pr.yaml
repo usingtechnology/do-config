@@ -1,0 +1,11 @@
+holder:
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/f6b17d-tools/bcgov-b2b
+    pullPolicy: Always
+    tag: "latest"
+
+verifier:
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/f6b17d-tools/bcgov-b2b
+    pullPolicy: Always
+    tag: "latest"
