@@ -2,9 +2,9 @@ holder:
   image:
     repository: ghcr.io/usingtechnology/do-app/traction-holder
     pullPolicy: Always
-    tag: b1bb38d
+    tag: e74f4ad
 verifier:
   image:
     repository: ghcr.io/usingtechnology/do-app/traction-verfier
     pullPolicy: Always
-    tag: b1bb38d
+    tag: e74f4ad
