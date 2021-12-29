@@ -2,9 +2,9 @@ holder:
   image:
     repository: ghcr.io/usingtechnology/do-app/traction-holder
     pullPolicy: Always
-    tag: sha-36e30a0
+    tag: sha-1b5718b
 verifier:
   image:
     repository: ghcr.io/usingtechnology/do-app/traction-verfier
     pullPolicy: Always
-    tag: sha-36e30a0
+    tag: sha-1b5718b
