@@ -1,0 +1,13 @@
+global:
+  ingressSuffix: -tools.apps.silver.devops.gov.bc.ca
+  deployment:
+    env: tools
+    tag: ''
+holder:
+  image:
+    tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
+    pullPolicy: Always
+verifier:
+  image:
+    tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"
+    pullPolicy: Always
