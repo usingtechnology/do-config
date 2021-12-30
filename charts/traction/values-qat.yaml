@@ -1,0 +1,16 @@
+# this file should overlay values and values-test
+global:
+  fullnameOverride: "qat-traction"
+
+postgresql:
+  fullnameOverride: 'qat-traction'
+
+holder:
+  image:
+    tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
+    pullPolicy: Always
+    
+verifier:
+  image:
+    tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"
+    pullPolicy: Always

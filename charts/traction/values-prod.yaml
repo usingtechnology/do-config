@@ -1,0 +1,7 @@
+holder:
+  image:
+    tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
+    
+verifier:
+  image:
+    tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"
