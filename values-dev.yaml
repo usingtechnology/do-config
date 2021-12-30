@@ -2,7 +2,7 @@ holder:
   image:
     repository: ghcr.io/usingtechnology/do-app/traction-holder
     pullPolicy: Always
-    tag: ghcr.io/usingtechnology/holder_image:sha-652a4e2
+    tag: ghcr.io/usingtechnology/holder_image:sha-461c7bb
 verifier:
   image:
     repository: ghcr.io/usingtechnology/do-app/traction-verfier
