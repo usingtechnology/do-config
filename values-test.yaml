@@ -7,4 +7,4 @@ verifier:
   image:
     repository: ghcr.io/usingtechnology/do-app/traction-verfier
     pullPolicy: Always
-    tag: "null"
+    tag: "ghcr.io/usingtechnology/verifier_image:sha-145051d"
