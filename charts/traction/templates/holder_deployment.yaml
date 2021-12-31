@@ -10,6 +10,8 @@ spec:
       {{- include "holder.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/holder_configmap.yaml") . | sha256sum }} 
     {{- with .Values.holder.podAnnotations -}}  
         {{- toYaml . | nindent 8 }}
     {{- end }}
@@ -59,6 +61,7 @@ spec:
               value: {{ .Values.postgresql.postgresqlUsername }}
             - name: POSTGRESQL_DB
               value: {{ .Values.postgresql.postgresqlDatabase }}
+            {{- include "holder.configmap.env.vars" . | nindent 10}}
           resources:
             {{- toYaml .Values.holder.resources | nindent 12 }}
       {{- with .Values.holder.nodeSelector }}

@@ -4,6 +4,10 @@
 
 global:
   nameOverride: ""
+  # global.fullnameOverride and postgresql.fullnameOverride must be changed if deploying multiple instances to the same namespace
+  # the postgresql chart creates secrets and pvcs related to the fullname and will be identical without the override.
+  # use the global.fullnameOverride to install a different named helm instance and will affect naming of all objects and routes for that chart.
+  # for pull requests, can set to something like pr-NN-traction. 
   fullnameOverride: "traction"
 
   # -- Domain suffix to be used for default hostpaths in ingress
@@ -25,9 +29,17 @@ global:
     # tools, dev, test, prod.
     env: prod
 
-  # when deploying a Pull Request, this will be the pr number, other use cases may be hotfixes, UAT etc
-  # this will be used to generate object names and routes etc.
-  tag: ''
+# this should be populated by the build and deploy process
+# and use semantic versioning v1.2.3-test+1.2
+# version_no = 1.2.3 (Major minor patch)
+# prerelease = test
+# build_no = 1.2
+# prerelease will only exist for test instances and build_no is entirely optional
+
+release:
+  version_no: ''
+  prerelease:  ''
+  build_no:  ''
 
 traction:
 
@@ -267,6 +279,8 @@ postgresql:
 holder:
   image:
     tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
+    version: ''
+    buildtime: ''
     pullPolicy: IfNotPresent
 
   serviceAccount:
@@ -378,6 +392,8 @@ holder:
 verifier:
   image:
     tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"
+    version: ''
+    buildtime: ''
     pullPolicy: IfNotPresent
 
   serviceAccount:

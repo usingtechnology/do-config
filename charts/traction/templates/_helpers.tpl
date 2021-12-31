@@ -1,9 +1,3 @@
-{{- define "add.tag" -}}
-{{- if .Values.global.tag }}
-{{- printf "-%s" ( .Values.global.tag | toString ) | trimSuffix "-" }}
-{{- end }}
-{{- end }}
-
 {{/*
 Expand the name of the chart.
 */}}
@@ -42,7 +36,7 @@ Create a default fully qualified acapy name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
 {{- define "acapy.fullname" -}}
-{{ template "global.fullname" . }}-acapy{{ template "add.tag" . }}
+{{ template "global.fullname" . }}-acapy
 {{- end -}}
 
 {{/*
@@ -190,7 +184,7 @@ Create the name for the database secret.
 {{- if .Values.global.persistence.existingSecret -}}
   {{- .Values.global.persistence.existingSecret -}}
 {{- else -}}
-  {{- template "global.fullname" . -}}-db{{ template "add.tag" . }}
+  {{- template "global.fullname" . -}}-db
 {{- end -}}
 {{- end -}}
 
@@ -257,7 +251,7 @@ Create a default fully qualified holder name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
 {{- define "holder.fullname" -}}
-{{ template "global.fullname" . }}-holder{{ template "add.tag" . }}
+{{ template "global.fullname" . }}-holder
 {{- end -}}
 
 {{/*
@@ -279,6 +273,15 @@ Selector holder labels
 app.kubernetes.io/name: {{ include "holder.fullname" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Mount the holder config map as env vars
+*/}}
+{{- define "holder.configmap.env.vars" -}}
+envFrom:
+  - configMapRef:
+      name: {{ template "holder.fullname" . }}
+{{- end -}}
 
 {{/*
 Create the name of the service account to use
@@ -316,7 +319,7 @@ Create a default fully qualified verifier name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
 {{- define "verifier.fullname" -}}
-{{ template "global.fullname" . }}-verifier{{ template "add.tag" . }}
+{{ template "global.fullname" . }}-verifier
 {{- end -}}
 
 {{/*
@@ -338,6 +341,15 @@ Selector verifier labels
 app.kubernetes.io/name: {{ include "verifier.fullname" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Mount the verifier config map as env vars
+*/}}
+{{- define "verifier.configmap.env.vars" -}}
+envFrom:
+  - configMapRef:
+      name: {{ template "verifier.fullname" . }}
+{{- end -}}
 
 {{/*
 Create the name of the service account to use

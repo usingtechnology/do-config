@@ -5,12 +5,21 @@ global:
 postgresql:
   fullnameOverride: 'qat-traction'
 
+release:
+  version_no: ''
+  prerelease:  ''
+  build_no:  ''
+
 holder:
   image:
     tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
+    version: ''
+    buildtime: ''
     pullPolicy: Always
     
 verifier:
   image:
     tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"
+    version: ''
+    buildtime: ''
     pullPolicy: Always

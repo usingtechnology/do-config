@@ -10,6 +10,8 @@ spec:
       {{- include "verifier.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/verifier_configmap.yaml") . | sha256sum }} 
     {{- with .Values.verifier.podAnnotations -}}  
         {{- toYaml . | nindent 8 }}
     {{- end }}
@@ -59,6 +61,7 @@ spec:
               value: {{ .Values.postgresql.postgresqlUsername }}
             - name: POSTGRESQL_DB
               value: {{ .Values.postgresql.postgresqlDatabase }}
+            {{- include "verifier.configmap.env.vars" . | nindent 10}}
           resources:
             {{- toYaml .Values.verifier.resources | nindent 12 }}
       {{- with .Values.verifier.nodeSelector }}
