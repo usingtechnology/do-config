@@ -1,7 +1,6 @@
 # Default values for helm-chart.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
 global:
   nameOverride: ""
   # global.fullnameOverride and postgresql.fullnameOverride must be changed if deploying multiple instances to the same namespace
@@ -9,71 +8,58 @@ global:
   # use the global.fullnameOverride to install a different named helm instance and will affect naming of all objects and routes for that chart.
   # for pull requests, can set to something like pr-NN-traction. 
   fullnameOverride: "traction"
-
   # -- Domain suffix to be used for default hostpaths in ingress
   # override in different environments, or for each app
   # --set global.ingressSuffix
   ingressSuffix: -prod.apps.silver.devops.gov.bc.ca
-
   persistence:
     # -- If true, the Postgres chart is deployed
     deployPostgres: true
-
   # -- The used ledger. Will be used for default values.
   ledger: bcovrin-test
-
   namespaces:
     prefix: bc0192
-
   deployment:
     # tools, dev, test, prod.
     env: prod
-
 # this should be populated by the build and deploy process
 # and use semantic versioning v1.2.3-test+1.2
 # version_no = 1.2.3 (Major minor patch)
 # prerelease = test
 # build_no = 1.2
 # prerelease will only exist for test instances and build_no is entirely optional
-
 release:
-  version_no: '0.0.0'
+  version_no: '1.2.3'
   prerelease: ''
   build_no: ''
-
 traction:
-
   config:
     ledger:
       browserUrlOverride: ""
       genesisUrlOverride: ""
     # -- The scheme that is used to register the profile endpoint on the ledger
     scheme: https
-
   imagePullSecrets: []
-
   podAnnotations: {}
-
   podSecurityContext: {}
-    # fsGroup: 2000
+  # fsGroup: 2000
 
   securityContext: {}
-    # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
-    # runAsNonRoot: true
-    # runAsUser: 1000
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
   service:
     type: ClusterIP
     port: 80
-
   ingress:
     enabled: false
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
     # Uncomment this to define your own hosts and override global.ingressSuffix
     # hosts:
     #     host:
@@ -82,7 +68,6 @@ traction:
     #  - secretName: my-bpa-tls
     #    hosts:
     #      - my-bpa.local
-
   openshift:
     route:
       enabled: true
@@ -94,7 +79,6 @@ traction:
         insecureEdgeTerminationPolicy: None
         termination: edge
       wildcardPolicy: None
-
   resources:
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
@@ -106,58 +90,43 @@ traction:
     requests:
       cpu: 200m
       memory: 256Mi
-
   nodeSelector: {}
-
   tolerations: []
-
   affinity: {}
-
 acapy:
   image:
     repository: bcgovimages/aries-cloudagent
     pullPolicy: IfNotPresent
     # --  Overrides the image tag whose default is the chart appVersion.
     tag: py36-1.16-1_0.7.2
-
   adminURLApiKey: 2f9729eef0be49608c1cffd49ee3cc4a
-
-
   # The agent seed, 32 characters. Will be generated if not defined here
   agentSeed: ""
-
   labelOverride: ""
-
   readOnlyMode: false
-
   imagePullSecrets: []
   nameOverride: ""
   fullnameOverride: ""
-
   podAnnotations: {}
-
   podSecurityContext: {}
-    # fsGroup: 2000
-
+  # fsGroup: 2000
 
   securityContext:
-    # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
-    # runAsNonRoot: true
-    # runAsUser: 1001
-
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1001
   service:
     type: ClusterIP
     adminPort: 8031
     httpPort: 8030
-
   ingress:
     enabled: false
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
 
     # Uncomment this to define your own hosts and override global.ingressSuffix
     # hosts:
@@ -167,7 +136,6 @@ acapy:
     #  - secretName: my-acapy-tls
     #    hosts:
     #      - my-acapy.local
-
   openshift:
     route:
       enabled: true
@@ -179,17 +147,13 @@ acapy:
         insecureEdgeTerminationPolicy: None
         termination: edge
       wildcardPolicy: None
-
   tails:
     # -- Set to true to enable revocation (external tails server required)
     enabled: false
-
     # -- Override the otherwise ledger-specifically generated base URL of the external tails server
     baseUrlOverride: ""
-
     # -- Override the otherwise ledger-specifically generated upload URL of the external tails server
     uploadUrlOverride: ""
-
   resources:
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
@@ -201,13 +165,9 @@ acapy:
     requests:
       cpu: 100m
       memory: 256Mi
-
   nodeSelector: {}
-
   tolerations: []
-
   affinity: {}
-
   staticArgs:
     autoAcceptInvites: true
     autoAcceptRequests: true
@@ -227,19 +187,15 @@ acapy:
     multitenant: true
     multitenantAdmin: true
     jwtSecret: 1234567
-
 postgresql:
   fullnameOverride: 'traction'
   # --  PostgreSQL service configuration
   service:
     port: 5432
-
   # --  PostgreSQL User to create. Do not change - otherwise non-admin user is created!
   postgresqlUsername: postgres
-
   # --  PostgreSQL Password for the new user. If not set, a random 10 characters password will be used.
   postgresqlPassword: change-me
-
   # -- PostgreSQL Database to create.
   postgresqlDatabase: traction
   initdbScripts:
@@ -253,10 +209,8 @@ postgresql:
       GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA holder TO holderuser;
       GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA verifier TO verifieruser;
       GRANT ALL ON ALL TABLES TO tractionuser;
-
   # --  Persistent Volume Storage configuration. ref: https://kubernetes.io/docs/user-guide/persistent-volumes
   persistence:
-
     # -- Enable PostgreSQL persistence using Persistent Volume Claims.
     enabled: true
     size: 1Gi
@@ -275,14 +229,12 @@ postgresql:
     requests:
       cpu: 50m
       memory: 256Mi
-
 holder:
   image:
     tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
     version: ''
     buildtime: ''
     pullPolicy: IfNotPresent
-
   serviceAccount:
     # -- Specifies whether a service account should be created
     create: false
@@ -290,11 +242,9 @@ holder:
     annotations: {}
     # -- The name of the service account to use. If not set and create is true, a name is generated using the fullname template
     name: ""
-
   config:
     # -- Override name shown in the frontend (may contain whitespaces and so on). Default: Helm release name, capitalized
     nameOverride: ""
-
     # -- Override title shown in the browser tab. Default: Helm release name, capitalized (or NameOverride if given)
     titleOverride: ""
     security:
@@ -325,31 +275,27 @@ holder:
       fallbackLocale: en
     # --  log4j2 configuration file which must be in the classpath. Use log4j2.xml for non-json.
     logConfigurationFile: log4j2.xml
-
   imagePullSecrets: []
-
   podAnnotations: {}
-
   podSecurityContext: {}
-    # fsGroup: 2000
+  # fsGroup: 2000
 
   securityContext: {}
-    # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
-    # runAsNonRoot: true
-    # runAsUser: 1000
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
   service:
     type: ClusterIP
     port: 5000
-
   ingress:
     enabled: false
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
     # Uncomment this to define your own hosts and override global.ingressSuffix
     # hosts:
     #     host:
@@ -358,7 +304,6 @@ holder:
     #  - secretName: my-bpa-tls
     #    hosts:
     #      - my-bpa.local
-
   openshift:
     route:
       enabled: true
@@ -370,7 +315,6 @@ holder:
         insecureEdgeTerminationPolicy: None
         termination: edge
       wildcardPolicy: None
-
   resources:
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
@@ -382,20 +326,15 @@ holder:
     requests:
       cpu: 50m
       memory: 256Mi
-
   nodeSelector: {}
-
   tolerations: []
-
   affinity: {}
-
 verifier:
   image:
     tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"
     version: ''
     buildtime: ''
     pullPolicy: IfNotPresent
-
   serviceAccount:
     # -- Specifies whether a service account should be created
     create: false
@@ -403,11 +342,9 @@ verifier:
     annotations: {}
     # -- The name of the service account to use. If not set and create is true, a name is generated using the fullname template
     name: ""
-
   config:
     # -- Override name shown in the frontend (may contain whitespaces and so on). Default: Helm release name, capitalized
     nameOverride: ""
-
     # -- Override title shown in the browser tab. Default: Helm release name, capitalized (or NameOverride if given)
     titleOverride: ""
     security:
@@ -438,31 +375,27 @@ verifier:
       fallbackLocale: en
     # --  log4j2 configuration file which must be in the classpath. Use log4j2.xml for non-json.
     logConfigurationFile: log4j2.xml
-
   imagePullSecrets: []
-
   podAnnotations: {}
-
   podSecurityContext: {}
-    # fsGroup: 2000
+  # fsGroup: 2000
 
   securityContext: {}
-    # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
-    # runAsNonRoot: true
-    # runAsUser: 1000
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
   service:
     type: ClusterIP
     port: 5000
-
   ingress:
     enabled: false
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
     # Uncomment this to define your own hosts and override global.ingressSuffix
     # hosts:
     #     host:
@@ -471,7 +404,6 @@ verifier:
     #  - secretName: my-bpa-tls
     #    hosts:
     #      - my-bpa.local
-
   openshift:
     route:
       enabled: true
@@ -483,7 +415,6 @@ verifier:
         insecureEdgeTerminationPolicy: None
         termination: edge
       wildcardPolicy: None
-
   resources:
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
@@ -495,9 +426,6 @@ verifier:
     requests:
       cpu: 50m
       memory: 256Mi
-
   nodeSelector: {}
-
   tolerations: []
-
   affinity: {}
