@@ -1,7 +1,5 @@
 release:
-  version_no: '1.2.3'
-  prerelease: ''
-  build_no: ''
+  version: '0.0.0'
 holder:
   image:
     tag: "ghcr.io/usingtechnology/holder_image:sha-f04b340"

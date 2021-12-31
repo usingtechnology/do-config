@@ -3,22 +3,16 @@ global:
   ingressSuffix: -tools.apps.silver.devops.gov.bc.ca
   deployment:
     env: tools
-
 postgresql:
   fullnameOverride: 'pr-traction'
-
 release:
-  version_no: '0.0.0'
-  prerelease:  ''
-  build_no:  ''
-
+  version: '0.0.0'
 holder:
   image:
     tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
     version: ''
     buildtime: ''
     pullPolicy: Always
-
 verifier:
   image:
     tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"

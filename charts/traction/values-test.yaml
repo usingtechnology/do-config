@@ -1,12 +1,9 @@
 global:
   ingressSuffix: -test.apps.silver.devops.gov.bc.ca
   deployment:
-    # tools, dev, test, prod.
     env: test
 release:
-  version_no: '1.2.3'
-  prerelease: 'test'
-  build_no: '4.5'
+  version: '0.0.0'
 holder:
   image:
     tag: "ghcr.io/usingtechnology/holder_image:sha-f04b340"

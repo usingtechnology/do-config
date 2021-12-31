@@ -29,9 +29,7 @@ global:
 # build_no = 1.2
 # prerelease will only exist for test instances and build_no is entirely optional
 release:
-  version_no: '1.2.3'
-  prerelease: ''
-  build_no: ''
+  version: '1.2.3'
 traction:
   config:
     ledger:
