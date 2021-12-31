@@ -6,8 +6,8 @@ postgresql:
   fullnameOverride: 'qat-traction'
 
 release:
-  version_no: ''
-  prerelease:  ''
+  version_no: '0.0.0'
+  prerelease:  'qat'
   build_no:  ''
 
 holder:

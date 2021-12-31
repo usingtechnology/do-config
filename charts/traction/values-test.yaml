@@ -5,8 +5,8 @@ global:
     env: test
 
 release:
-  version_no: ''
-  prerelease:  ''
+  version_no: '0.0.0'
+  prerelease:  'test'
   build_no:  ''
 
 holder:

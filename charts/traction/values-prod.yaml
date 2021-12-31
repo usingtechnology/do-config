@@ -1,5 +1,5 @@
 release:
-  version_no: ''
+  version_no: '0.0.0'
   prerelease:  ''
   build_no:  ''
 

@@ -37,9 +37,9 @@ global:
 # prerelease will only exist for test instances and build_no is entirely optional
 
 release:
-  version_no: ''
-  prerelease:  ''
-  build_no:  ''
+  version_no: '0.0.0'
+  prerelease: ''
+  build_no: ''
 
 traction:
 
