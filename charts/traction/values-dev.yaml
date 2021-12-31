@@ -9,13 +9,13 @@ release:
   build_no: ''
 holder:
   image:
-    tag: "ghcr.io/usingtechnology/holder_image:sha-ae05f2b"
-    version: 'sha-ae05f2b'
-    buildtime: '2021-12-31T19:25:33.713Z'
+    tag: "ghcr.io/usingtechnology/holder_image:sha-f04b340"
+    version: 'sha-f04b340'
+    buildtime: '2021-12-31T19:36:06.025Z'
     pullPolicy: Always
 verifier:
   image:
-    tag: "ghcr.io/usingtechnology/verifier_image:sha-ae05f2b"
-    version: 'sha-ae05f2b'
-    buildtime: '2021-12-31T19:25:44.490Z'
+    tag: "ghcr.io/usingtechnology/verifier_image:sha-f04b340"
+    version: 'sha-f04b340'
+    buildtime: '2021-12-31T19:36:10.832Z'
     pullPolicy: Always
