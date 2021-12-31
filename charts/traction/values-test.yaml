@@ -3,22 +3,19 @@ global:
   deployment:
     # tools, dev, test, prod.
     env: test
-
 release:
-  version_no: '0.0.0'
-  prerelease:  'test'
-  build_no:  ''
-
+  version_no: '0.0.10'
+  prerelease: 'test-1.0'
+  build_no: ''
 holder:
   image:
-    tag: "ghcr.io/bcgov/traction-holder:sha-c09d211"
-    version: ''
-    buildtime: ''
+    tag: "ghcr.io/usingtechnology/holder_image:sha-f04b340"
+    version: 'sha-f04b340'
+    buildtime: '2021-12-31T19:36:06.025Z'
     pullPolicy: Always
-    
 verifier:
   image:
-    tag: "ghcr.io/bcgov/traction-verifier:sha-c09d211"
-    version: ''
-    buildtime: ''
+    tag: "ghcr.io/usingtechnology/verifier_image:sha-f04b340"
+    version: 'sha-f04b340'
+    buildtime: '2021-12-31T19:36:10.832Z'
     pullPolicy: Always
