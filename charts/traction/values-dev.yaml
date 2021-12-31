@@ -9,5 +9,5 @@ holder:
     pullPolicy: Always
 verifier:
   image:
-    tag: "ghcr.io/usingtechnology/verifier_image:sha-fe7cdaa"
+    tag: "ghcr.io/usingtechnology/verifier_image:sha-1763a3e"
     pullPolicy: Always
